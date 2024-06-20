@@ -1,4 +1,5 @@
 from __future__ import annotations
+import pytest
 from abc import ABC, abstractmethod
 from typing import Any
 
@@ -59,6 +60,28 @@ class Product1():
         print(f'Построенные части: {', '.join(self.parts)}', end="")
 
 
+@pytest.mark.myTests
+def test_manyWalls():
+    test_builder = Builder1()
+    test_builder.build_walls()
+    test_builder.build_walls()
+    test_builder.build_walls()
+    test_builder.build_walls()
+    test_builder.build_walls()
+    test_builder.build_walls()
+    test_builder.build_walls()
+    test_builder.build_walls()
+    assert (test_builder.house.parts == ["Стены", "Стены", "Стены", "Стены", "Стены", "Стены", "Стены", "Стены"])
+
+
+@pytest.mark.myTests
+def test_reset():
+    test_builder = Builder1()
+    test_builder.build_walls()
+    test_builder.reset()
+    assert (test_builder.house.parts == [])
+
+
 if __name__ == "__main__":
 
     builder = Builder1()
@@ -76,7 +99,10 @@ if __name__ == "__main__":
 
     print("\n")
 
+
     print("Недостроенный участок: ")
     builder.build_foundation()
     builder.build_walls()
     builder.house.list_parts()
+
+
