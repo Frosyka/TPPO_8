@@ -57,7 +57,7 @@ class Product1():
         self.parts.append(part)
 
     def list_parts(self) -> None:
-        print(f'Построенные части: {', '.join(self.parts)}', end="")
+        print(f'Построенные части: {", ".join(self.parts)}', end="")
 
 
 @pytest.mark.myTests
